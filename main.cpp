@@ -127,6 +127,7 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
     else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Computer")
     {
         system("color 4F");
+        // play a bill when lose
         cout << "\a";
         cout << "[Computer]" << endl;
     }
