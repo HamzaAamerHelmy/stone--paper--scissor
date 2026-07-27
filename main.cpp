@@ -14,7 +14,7 @@ void readNumberOfRounds(int &numberOfRounds)
     do
     {
 
-        cout << "How Elements do you want to enter(max 10): ";
+        cout << "Enter Number Of Rounds(max 10): ";
         cin >> userInput;
         cout << endl;
 
@@ -93,58 +93,54 @@ string winnerRules(enChoices choiceOfPlayer, enChoices choiceOfComputer)
     return "Wrong";
 }
 
+void printPlayerChoice(enChoices choiceOfPlayer, string textOfPlayer)
+{
+    switch (choiceOfPlayer)
+    {
+    case enChoices::stone:
+        cout << textOfPlayer << " Choice: Stone" << endl;
+        break;
+    case enChoices::paper:
+        cout << textOfPlayer << " Choice: Paper" << endl;
+        break;
+    case enChoices::scissor:
+        cout << textOfPlayer << " Choice: Scissor" << endl;
+        break;
+    default:
+        break;
+    }
+}
+
 void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     cout << "____________________Round[" << numberOfThisRound << "]____________________" << endl
          << endl;
-    switch (choiceOfPlayer)
-    {
-    case enChoices::stone:
-        cout << "Player Choice: Stone" << endl;
-        break;
-    case enChoices::paper:
-        cout << "Player Choice: Paper" << endl;
-        break;
-    case enChoices::scissor:
-        cout << "Player Choice: Scissor" << endl;
-        break;
-    default:
-        break;
-    }
-
-    switch (choiceOfComputer)
-    {
-    case enChoices::stone:
-        cout << "Computer Choice: Stone" << endl;
-        break;
-    case enChoices::paper:
-        cout << "Computer Choice: Paper" << endl;
-        break;
-    case enChoices::scissor:
-        cout << "Computer Choice: Scissor" << endl;
-        break;
-    default:
-        break;
-    }
+    printPlayerChoice(choiceOfPlayer, "Player");
+    printPlayerChoice(choiceOfComputer, "Computer");
 
     cout << "Round Winner   : ";
     if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Player")
     {
-        cout << " Player" << endl;
+        system("color 2F");
+        cout << "Player" << endl;
     }
     else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Computer")
     {
+        system("color 4F");
+        cout << "\a";
         cout << "[Computer]" << endl;
     }
     else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Equal")
     {
-        cout << "No Winner" << endl;
+        system("color 6F");
+        cout << "[No Winner]" << endl;
     }
     cout << "__________________________________________________" << endl;
 }
 
 void StartGame()
 {
+    system("color 0F");
     srand((unsigned)time(NULL));
 
     enChoices choices;
