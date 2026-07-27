@@ -33,21 +33,22 @@ enChoices readPlayerInputOfThisRound(enChoices choices, int numberOfThisRound)
 {
     int userChoice = 0;
     do
-    {  
-        cout << "Round [" << numberOfThisRound << "] begins: " << endl << endl;
+    {
+        cout << "Round [" << numberOfThisRound << "] begins: " << endl
+             << endl;
         cout << "Enter Your Choice: [1]stone, [2] paper, [3] scissor: ";
         cin >> userChoice;
         cout << "\n";
-    
+
         choices = (enChoices)userChoice;
-    
+
         if (userChoice != enChoices::stone && userChoice != enChoices::paper && userChoice != enChoices::scissor)
         {
             cout << "Wrong Input!" << endl;
             continue;
         }
         return choices;
-    }while (userChoice != enChoices::stone && userChoice != enChoices::paper && userChoice != enChoices::scissor);
+    } while (userChoice != enChoices::stone && userChoice != enChoices::paper && userChoice != enChoices::scissor);
 
     return choices;
 }
@@ -94,7 +95,8 @@ string winnerRules(enChoices choiceOfPlayer, enChoices choiceOfComputer)
 
 void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
-    cout << "____________________Round [" << numberOfThisRound << "]____________________" << endl << endl;
+    cout << "____________________Round[" << numberOfThisRound << "]____________________" << endl
+         << endl;
     switch (choiceOfPlayer)
     {
     case enChoices::stone:
@@ -124,23 +126,38 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
     default:
         break;
     }
+
+    cout << "Round Winner   : ";
+    if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Player")
+    {
+        cout << " Player" << endl;
+    }
+    else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Computer")
+    {
+        cout << "[Computer]" << endl;
+    }
+    else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Equal")
+    {
+        cout << "No Winner" << endl;
+    }
+    cout << "__________________________________________________" << endl;
 }
 
 void StartGame()
 {
     srand((unsigned)time(NULL));
-    
+
     enChoices choices;
 
     int numberOfRounds = 0;
 
     readNumberOfRounds(numberOfRounds);
 
-    enChoices playerInput = readPlayerInputOfThisRound(choices, 1);
+    enChoices choiceOfPlayer = readPlayerInputOfThisRound(choices, 1);
 
-    enChoices computerInput = fillComputerInput();
+    enChoices choiceOfComputer = fillComputerInput();
 
-    printDetailsOfThisRound(1, playerInput, computerInput);
+    printDetailsOfThisRound(1, choiceOfPlayer, choiceOfComputer);
 }
 
 int main()
