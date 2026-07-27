@@ -46,18 +46,38 @@ enChoices readThisRound(enChoices choices, int numberOfThisRound)
             continue;
         }
         return choices;
-    }while (userChoice == enChoices::stone && userChoice == enChoices::paper && userChoice == enChoices::scissor);
+    }while (userChoice != enChoices::stone && userChoice != enChoices::paper && userChoice != enChoices::scissor);
 
     return choices;
 }
 
-int main()
+enChoices fillComputerInput()
 {
+    int randomChoice = rand() % (enChoices::scissor - enChoices::stone) + enChoices::stone;
+
+    return (enChoices)randomChoice;
+}
+
+void StartGame()
+{
+    srand((unsigned)time(NULL));
+    
     enChoices choices;
 
     int numberOfRounds = 0;
 
     readNumberOfRounds(numberOfRounds);
+
+    int playerChoice = readThisRound(choices, 1);
+
+    cout << playerChoice << endl;
+
+    cout << fillComputerInput() << endl;
+}
+
+int main()
+{
+    StartGame();
 
     return 0;
 }
