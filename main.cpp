@@ -29,7 +29,7 @@ void readNumberOfRounds(int &numberOfRounds)
     } while (userInput > 10);
 }
 
-enChoices readThisRound(enChoices choices, int numberOfThisRound)
+enChoices readPlayerInputOfThisRound(enChoices choices, int numberOfThisRound)
 {
     int userChoice = 0;
     do
@@ -37,6 +37,7 @@ enChoices readThisRound(enChoices choices, int numberOfThisRound)
         cout << "Round [" << numberOfThisRound << "] begins: " << endl << endl;
         cout << "Enter Your Choice: [1]stone, [2] paper, [3] scissor: ";
         cin >> userChoice;
+        cout << "\n";
     
         choices = (enChoices)userChoice;
     
@@ -58,6 +59,73 @@ enChoices fillComputerInput()
     return (enChoices)randomChoice;
 }
 
+string winnerRules(enChoices choiceOfPlayer, enChoices choiceOfComputer)
+{
+    if (choiceOfPlayer == choiceOfComputer)
+    {
+        return "Equal";
+    }
+    else if (choiceOfPlayer == enChoices::stone && choiceOfComputer == enChoices::paper)
+    {
+        return "Computer";
+    }
+    else if (choiceOfPlayer == enChoices::stone && choiceOfComputer == enChoices::scissor)
+    {
+        return "Player";
+    }
+    else if (choiceOfPlayer == enChoices::paper && choiceOfComputer == enChoices::stone)
+    {
+        return "Player";
+    }
+    else if (choiceOfPlayer == enChoices::paper && choiceOfComputer == enChoices::scissor)
+    {
+        return "Computer";
+    }
+    else if (choiceOfPlayer == enChoices::scissor && choiceOfComputer == enChoices::stone)
+    {
+        return "Computer";
+    }
+    else if (choiceOfPlayer == enChoices::scissor && choiceOfComputer == enChoices::paper)
+    {
+        return "Player";
+    }
+    return "Wrong";
+}
+
+void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer)
+{
+    cout << "____________________Round [" << numberOfThisRound << "]____________________" << endl << endl;
+    switch (choiceOfPlayer)
+    {
+    case enChoices::stone:
+        cout << "Player Choice: Stone" << endl;
+        break;
+    case enChoices::paper:
+        cout << "Player Choice: Paper" << endl;
+        break;
+    case enChoices::scissor:
+        cout << "Player Choice: Scissor" << endl;
+        break;
+    default:
+        break;
+    }
+
+    switch (choiceOfComputer)
+    {
+    case enChoices::stone:
+        cout << "Computer Choice: Stone" << endl;
+        break;
+    case enChoices::paper:
+        cout << "Computer Choice: Paper" << endl;
+        break;
+    case enChoices::scissor:
+        cout << "Computer Choice: Scissor" << endl;
+        break;
+    default:
+        break;
+    }
+}
+
 void StartGame()
 {
     srand((unsigned)time(NULL));
@@ -68,11 +136,11 @@ void StartGame()
 
     readNumberOfRounds(numberOfRounds);
 
-    int playerChoice = readThisRound(choices, 1);
+    enChoices playerInput = readPlayerInputOfThisRound(choices, 1);
 
-    cout << playerChoice << endl;
+    enChoices computerInput = fillComputerInput();
 
-    cout << fillComputerInput() << endl;
+    printDetailsOfThisRound(1, playerInput, computerInput);
 }
 
 int main()
