@@ -53,7 +53,7 @@ enChoices readThisRound(enChoices choices, int numberOfThisRound)
 
 enChoices fillComputerInput()
 {
-    int randomChoice = rand() % (enChoices::scissor - enChoices::stone) + enChoices::stone;
+    int randomChoice = rand() % ((enChoices::scissor + 1) - enChoices::stone) + enChoices::stone;
 
     return (enChoices)randomChoice;
 }
