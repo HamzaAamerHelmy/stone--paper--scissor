@@ -140,6 +140,7 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
 
 void StartGame()
 {
+    // reset system screen
     system("color 0F");
     srand((unsigned)time(NULL));
 
