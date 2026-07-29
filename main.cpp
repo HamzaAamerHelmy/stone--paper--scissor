@@ -122,7 +122,7 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
     if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Player")
     {
         system("color 2F");
-        cout << "Player" << endl;
+        cout << "[Player]" << endl;
     }
     else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Computer")
     {
