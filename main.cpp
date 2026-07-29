@@ -8,6 +8,12 @@ enum enChoices
     scissor = 3
 };
 
+int scoreOfPlayer = 0;
+
+int scoreOfComputer = 0;
+
+int scoreOfDraw = 0;
+
 void readNumberOfRounds(int &numberOfRounds)
 {
     int userInput = 0;
@@ -131,6 +137,7 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
     {
         system("color 2F");
         cout << "[Player]" << endl;
+        scoreOfPlayer++;
     }
     else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Computer")
     {
@@ -138,13 +145,15 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
         // play a bill when lose
         cout << "\a";
         cout << "[Computer]" << endl;
+        scoreOfComputer++;
     }
     else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Equal")
     {
         system("color 6F");
         cout << "[No Winner]" << endl;
+        scoreOfDraw++;
     }
-    cout << "__________________________________________________" << endl;
+    cout << "__________________________________________________" << endl << endl;
 }
 
 void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
