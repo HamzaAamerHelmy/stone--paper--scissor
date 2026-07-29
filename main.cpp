@@ -157,7 +157,6 @@ void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, en
 
         printDetailsOfThisRound(i, choiceOfPlayer, choiceOfComputer);
     }
-    
 }
 
 void StartGame()
