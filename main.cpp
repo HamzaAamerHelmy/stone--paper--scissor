@@ -166,6 +166,38 @@ void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, en
     }
 }
 
+void printGameOver(int numberOfRounds)
+{
+    cout << "                   _______________________________________________________________________________________________" << endl << endl;
+    cout << "                                                 +++     G a m e O v e r     +++" << endl;
+    cout << "                   _______________________________________________________________________________________________" << endl << endl;
+    cout << "                   _______________________________________ [Game Results] ________________________________________" << endl << endl;
+    cout << "                   Game Rounds        : " << numberOfRounds << endl;
+
+    cout << "                   Player won times   : " << scoreOfPlayer << endl;
+
+    cout << "                   Computer won times : " << scoreOfComputer << endl;
+
+    cout << "                   Draw times         : " << scoreOfDraw << endl;
+
+    cout << "                   Final Winner       : ";
+
+    if (scoreOfPlayer == scoreOfComputer)
+    {
+        cout << "No Winner" << endl << endl;
+    }
+    else if (scoreOfPlayer > scoreOfComputer)
+    {
+        cout << "Player" << endl << endl;
+    }
+    else if (scoreOfComputer > scoreOfPlayer)
+    {
+        cout << "Computer" << endl << endl;
+    }
+    
+    cout << "                   _______________________________________________________________________________________________" << endl << endl;
+}
+
 void StartGame()
 {
     // reset system screen
@@ -181,6 +213,8 @@ void StartGame()
     readNumberOfRounds(numberOfRounds);
 
     readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+
+    printGameOver(numberOfRounds);
 }
 
 int main()
