@@ -9,9 +9,7 @@ enum enChoices
 };
 
 int scoreOfPlayer = 0;
-
 int scoreOfComputer = 0;
-
 int scoreOfDraw = 0;
 
 void readNumberOfRounds(int &numberOfRounds)
