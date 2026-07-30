@@ -293,10 +293,8 @@ void StartGame()
 
     int numberOfRounds;
 
-    readNumberOfRounds(numberOfRounds);
-
-    readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
-
+    StartPlay(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+    
     printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 }
 
