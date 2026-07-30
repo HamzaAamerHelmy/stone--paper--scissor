@@ -228,6 +228,7 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
     {
         cout << "Computer" << endl
              << endl;
+        playLoseSound();
     }
 
     cout << "                   _______________________________________________________________________________________________" << endl
