@@ -206,6 +206,26 @@ void playLoseSound()
     Beep(300, 900);
 }
 
+void playDrawSound()
+{
+    Beep(523, 150);
+    Sleep(30);
+    Beep(659, 150);
+    Sleep(30);
+    Beep(523, 250);
+}
+
+void playWinSound()
+{
+    Beep(784, 120);
+    Sleep(30);
+    Beep(988, 120);
+    Sleep(30);
+    Beep(1175, 180);
+    Sleep(30);
+    Beep(1568, 350);
+}
+
 void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     cout << "                   _______________________________________________________________________________________________" << endl
@@ -229,11 +249,13 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
     {
         cout << "No Winner" << endl
              << endl;
+        playDrawSound();
     }
     else if (scoreOfPlayer > scoreOfComputer)
     {
         cout << "Player" << endl
              << endl;
+        playWinSound();
     }
     else if (scoreOfComputer > scoreOfPlayer)
     {
