@@ -166,7 +166,29 @@ void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, en
     }
 }
 
-void printGameOver(int numberOfRounds)
+void clearScreen()
+{
+    system("cls");
+}
+
+bool restartGame()
+{
+    string userInput = "";
+    
+    cout << "                   Do you want to Play Again (Y: yes, any Key: no): ";
+    cin >> userInput;
+    
+    if (userInput == "y" || userInput == "Y")
+    {
+        clearScreen();
+        return true;
+    }
+    return false;
+}
+
+
+
+void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     cout << "                   _______________________________________________________________________________________________" << endl << endl;
     cout << "                                                 +++     G a m e O v e r     +++" << endl;
@@ -196,6 +218,16 @@ void printGameOver(int numberOfRounds)
     }
     
     cout << "                   _______________________________________________________________________________________________" << endl << endl;
+    if (restartGame())
+    {
+        system("color 0F");
+        readNumberOfRounds(numberOfRounds);
+        readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+    }
+    else
+    {
+        return;
+    }
 }
 
 void StartGame()
@@ -208,13 +240,13 @@ void StartGame()
 
     enChoices choiceOfComputer;
 
-    int numberOfRounds = 0;
+    int numberOfRounds;
 
     readNumberOfRounds(numberOfRounds);
 
     readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 
-    printGameOver(numberOfRounds);
+    printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 }
 
 int main()
