@@ -195,10 +195,15 @@ void StartPlay(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfC
 
 void playLoseSound()
 {
-    Beep(600, 150);
-    Beep(500, 150);
-    Beep(400, 150);
-    Beep(300, 600);
+    Sleep(1000);
+
+    Beep(650, 250);
+    Sleep(70);
+
+    Beep(500, 250);
+    Sleep(70);
+
+    Beep(300, 900);
 }
 
 void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
@@ -233,7 +238,7 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
     else if (scoreOfComputer > scoreOfPlayer)
     {
         cout << "Computer" << endl
-             << endl;
+        << endl;
         playLoseSound();
     }
 
