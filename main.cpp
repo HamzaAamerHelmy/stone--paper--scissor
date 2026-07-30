@@ -187,17 +187,6 @@ bool restartGame()
     return false;
 }
 
-void playLoseSound()
-{
-    Beep(650, 250);
-    Sleep(70);
-
-    Beep(500, 250);
-    Sleep(70);
-
-    Beep(300, 900);
-}
-
 void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     cout << "                   _______________________________________________________________________________________________" << endl
@@ -237,9 +226,7 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
          << endl;
     if (restartGame())
     {
-        system("color 0F");
-        readNumberOfRounds(numberOfRounds);
-        readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+        
     }
     else
     {
