@@ -187,6 +187,12 @@ bool restartGame()
     return false;
 }
 
+void StartPlay(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
+{
+    readNumberOfRounds(numberOfRounds);
+    readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+}
+
 void playLoseSound()
 {
     Beep(600, 150);
@@ -235,7 +241,12 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
          << endl;
     if (restartGame())
     {
-        
+        system("color 0F");
+        scoreOfPlayer = 0;
+        scoreOfComputer = 0;
+        scoreOfDraw = 0;
+        StartPlay(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+        printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
     }
     else
     {
