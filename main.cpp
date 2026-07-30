@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 using namespace std;
 
 enum enChoices
@@ -105,7 +106,6 @@ void printPlayerChoice(enChoices choiceOfPlayer, string textOfPlayer)
     {
         space = "  ";
     }
-    
 
     switch (choiceOfPlayer)
     {
@@ -151,7 +151,8 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
         cout << "[No Winner]" << endl;
         scoreOfDraw++;
     }
-    cout << "__________________________________________________" << endl << endl;
+    cout << "__________________________________________________" << endl
+         << endl;
 }
 
 void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
@@ -166,12 +167,74 @@ void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, en
     }
 }
 
-void printGameOver(int numberOfRounds)
+void clearScreen()
 {
-    cout << "                   _______________________________________________________________________________________________" << endl << endl;
+    system("cls");
+}
+
+bool restartGame()
+{
+    string userInput = "";
+
+    cout << "                   Do you want to Play Again (Y: yes, any Key: no): ";
+    cin >> userInput;
+
+    if (userInput == "y" || userInput == "Y")
+    {
+        clearScreen();
+        return true;
+    }
+    return false;
+}
+
+void StartPlay(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
+{
+    readNumberOfRounds(numberOfRounds);
+    readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+}
+
+void playLoseSound()
+{
+    Sleep(1000);
+
+    Beep(650, 250);
+    Sleep(70);
+
+    Beep(500, 250);
+    Sleep(70);
+
+    Beep(300, 900);
+}
+
+void playDrawSound()
+{
+    Beep(523, 150);
+    Sleep(30);
+    Beep(659, 150);
+    Sleep(30);
+    Beep(523, 250);
+}
+
+void playWinSound()
+{
+    Beep(784, 120);
+    Sleep(30);
+    Beep(988, 120);
+    Sleep(30);
+    Beep(1175, 180);
+    Sleep(30);
+    Beep(1568, 350);
+}
+
+void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
+{
+    cout << "                   _______________________________________________________________________________________________" << endl
+         << endl;
     cout << "                                                 +++     G a m e O v e r     +++" << endl;
-    cout << "                   _______________________________________________________________________________________________" << endl << endl;
-    cout << "                   _______________________________________ [Game Results] ________________________________________" << endl << endl;
+    cout << "                   _______________________________________________________________________________________________" << endl
+         << endl;
+    cout << "                   _______________________________________ [Game Results] ________________________________________" << endl
+         << endl;
     cout << "                   Game Rounds        : " << numberOfRounds << endl;
 
     cout << "                   Player won times   : " << scoreOfPlayer << endl;
@@ -184,18 +247,38 @@ void printGameOver(int numberOfRounds)
 
     if (scoreOfPlayer == scoreOfComputer)
     {
-        cout << "No Winner" << endl << endl;
+        cout << "No Winner" << endl
+             << endl;
+        playDrawSound();
     }
     else if (scoreOfPlayer > scoreOfComputer)
     {
-        cout << "Player" << endl << endl;
+        cout << "Player" << endl
+             << endl;
+        playWinSound();
     }
     else if (scoreOfComputer > scoreOfPlayer)
     {
-        cout << "Computer" << endl << endl;
+        cout << "Computer" << endl
+        << endl;
+        playLoseSound();
     }
-    
-    cout << "                   _______________________________________________________________________________________________" << endl << endl;
+
+    cout << "                   _______________________________________________________________________________________________" << endl
+         << endl;
+    if (restartGame())
+    {
+        system("color 0F");
+        scoreOfPlayer = 0;
+        scoreOfComputer = 0;
+        scoreOfDraw = 0;
+        StartPlay(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+        printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+    }
+    else
+    {
+        return;
+    }
 }
 
 void StartGame()
@@ -208,13 +291,13 @@ void StartGame()
 
     enChoices choiceOfComputer;
 
-    int numberOfRounds = 0;
+    int numberOfRounds;
 
     readNumberOfRounds(numberOfRounds);
 
     readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 
-    printGameOver(numberOfRounds);
+    printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 }
 
 int main()
