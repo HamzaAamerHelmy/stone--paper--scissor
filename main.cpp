@@ -187,6 +187,14 @@ bool restartGame()
     return false;
 }
 
+void playLoseSound()
+{
+    Beep(600, 150);
+    Beep(500, 150);
+    Beep(400, 150);
+    Beep(300, 600);
+}
+
 void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     cout << "                   _______________________________________________________________________________________________" << endl
