@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 using namespace std;
 
 enum enChoices
@@ -105,7 +106,6 @@ void printPlayerChoice(enChoices choiceOfPlayer, string textOfPlayer)
     {
         space = "  ";
     }
-    
 
     switch (choiceOfPlayer)
     {
@@ -151,7 +151,8 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
         cout << "[No Winner]" << endl;
         scoreOfDraw++;
     }
-    cout << "__________________________________________________" << endl << endl;
+    cout << "__________________________________________________" << endl
+         << endl;
 }
 
 void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
@@ -174,10 +175,10 @@ void clearScreen()
 bool restartGame()
 {
     string userInput = "";
-    
+
     cout << "                   Do you want to Play Again (Y: yes, any Key: no): ";
     cin >> userInput;
-    
+
     if (userInput == "y" || userInput == "Y")
     {
         clearScreen();
@@ -186,14 +187,26 @@ bool restartGame()
     return false;
 }
 
+void playLoseSound()
+{
+    Beep(650, 250);
+    Sleep(70);
 
+    Beep(500, 250);
+    Sleep(70);
+
+    Beep(300, 900);
+}
 
 void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
-    cout << "                   _______________________________________________________________________________________________" << endl << endl;
+    cout << "                   _______________________________________________________________________________________________" << endl
+         << endl;
     cout << "                                                 +++     G a m e O v e r     +++" << endl;
-    cout << "                   _______________________________________________________________________________________________" << endl << endl;
-    cout << "                   _______________________________________ [Game Results] ________________________________________" << endl << endl;
+    cout << "                   _______________________________________________________________________________________________" << endl
+         << endl;
+    cout << "                   _______________________________________ [Game Results] ________________________________________" << endl
+         << endl;
     cout << "                   Game Rounds        : " << numberOfRounds << endl;
 
     cout << "                   Player won times   : " << scoreOfPlayer << endl;
@@ -206,18 +219,22 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
 
     if (scoreOfPlayer == scoreOfComputer)
     {
-        cout << "No Winner" << endl << endl;
+        cout << "No Winner" << endl
+             << endl;
     }
     else if (scoreOfPlayer > scoreOfComputer)
     {
-        cout << "Player" << endl << endl;
+        cout << "Player" << endl
+             << endl;
     }
     else if (scoreOfComputer > scoreOfPlayer)
     {
-        cout << "Computer" << endl << endl;
+        cout << "Computer" << endl
+             << endl;
     }
-    
-    cout << "                   _______________________________________________________________________________________________" << endl << endl;
+
+    cout << "                   _______________________________________________________________________________________________" << endl
+         << endl;
     if (restartGame())
     {
         system("color 0F");
