@@ -187,12 +187,6 @@ bool restartGame()
     return false;
 }
 
-void StartPlay(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
-{
-    readNumberOfRounds(numberOfRounds);
-    readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
-}
-
 void playLoseSound()
 {
     Sleep(1000);
@@ -260,7 +254,7 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
     else if (scoreOfComputer > scoreOfPlayer)
     {
         cout << "Computer" << endl
-        << endl;
+             << endl;
         playLoseSound();
     }
 
@@ -272,7 +266,8 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
         scoreOfPlayer = 0;
         scoreOfComputer = 0;
         scoreOfDraw = 0;
-        StartPlay(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+        readNumberOfRounds(numberOfRounds);
+        readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
         printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
     }
     else
@@ -293,8 +288,9 @@ void StartGame()
 
     int numberOfRounds;
 
-    StartPlay(numberOfRounds, choiceOfPlayer, choiceOfComputer);
-    
+    readNumberOfRounds(numberOfRounds);
+    readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+
     printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 }
 
