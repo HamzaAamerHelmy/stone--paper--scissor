@@ -16,11 +16,11 @@ void printWelcome()
 {
     cout << "___________________________Welcome To     ";
     mySleep(1000);
-    cout << "S T O N E ";
+    cout << "|S T O N E ";
     mySleep(1000);
     cout << "-- P A P E R";
     mySleep(1000);
-    cout << " -- S C I S S O R";
+    cout << " -- S C I S S O R|";
     mySleep(1000);
     cout << "     Game___________________________" << endl;
     mySleep(1000);
