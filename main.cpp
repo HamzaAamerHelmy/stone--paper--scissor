@@ -13,6 +13,11 @@ int scoreOfPlayer = 0;
 int scoreOfComputer = 0;
 int scoreOfDraw = 0;
 
+void clearScreen()
+{
+    system("cls");
+}
+
 void readNumberOfRounds(int &numberOfRounds)
 {
     int userInput = 0;
@@ -37,6 +42,7 @@ void readNumberOfRounds(int &numberOfRounds)
 enChoices readPlayerInputOfThisRound(enChoices choiceOfPlayer, int numberOfThisRound, int numberOfRounds)
 {
     int userChoice = 0;
+    clearScreen();
     do
     {
         cout << "Round [" << numberOfThisRound << "/" << numberOfRounds << "] begins: " << endl
@@ -165,11 +171,6 @@ void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, en
 
         printDetailsOfThisRound(i, choiceOfPlayer, choiceOfComputer);
     }
-}
-
-void clearScreen()
-{
-    system("cls");
 }
 
 bool restartGame()
