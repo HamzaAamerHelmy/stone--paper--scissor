@@ -250,6 +250,7 @@ void playWinSound()
 void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     string finalWinner = "";
+    mySleep(1000);
     cout << "                   _______________________________________________________________________________________________" << endl
          << endl;
     cout << "                                                 +++     G a m e O v e r     +++" << endl;
@@ -288,19 +289,16 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
 
     if (finalWinner == "No Winner")
     {
-        mySleep(1000);
         system("color 6F");
         playDrawSound();
     }
     else if (finalWinner == "Player")
     {
-        mySleep(1000);
         system("color 2F");
         playWinSound();
     }
     else
     {
-        mySleep(1000);
         system("color 4F");
         playLoseSound();
     }
