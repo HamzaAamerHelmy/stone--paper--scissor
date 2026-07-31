@@ -42,6 +42,8 @@ void readNumberOfRounds(int &numberOfRounds)
 enChoices readPlayerInputOfThisRound(enChoices choiceOfPlayer, int numberOfThisRound, int numberOfRounds)
 {
     int userChoice = 0;
+    cout << "Wait ..." << endl;
+    Sleep(3000);
     clearScreen();
     do
     {
