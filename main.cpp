@@ -207,11 +207,6 @@ bool restartGame()
         clearScreen();
         return true;
     }
-    else if (userInput == "")
-    {
-        return false;
-    }
-
     return false;
 }
 
@@ -293,16 +288,19 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
 
     if (finalWinner == "No Winner")
     {
+        mySleep(1000);
         system("color 6F");
         playDrawSound();
     }
     else if (finalWinner == "Player")
     {
+        mySleep(1000);
         system("color 2F");
         playWinSound();
     }
     else
     {
+        mySleep(1000);
         system("color 4F");
         playLoseSound();
     }
