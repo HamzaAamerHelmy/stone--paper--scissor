@@ -41,8 +41,6 @@ int scoreOfPlayer = 0;
 int scoreOfComputer = 0;
 int scoreOfDraw = 0;
 
-
-
 void readNumberOfRounds(int &numberOfRounds)
 {
     int userInput = 0;
@@ -209,6 +207,11 @@ bool restartGame()
         clearScreen();
         return true;
     }
+    else if (userInput == "")
+    {
+        return false;
+    }
+
     return false;
 }
 
@@ -281,12 +284,13 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
     {
         finalWinner = "Computer";
     }
-    
-    cout << finalWinner << endl << endl;
-    
+
+    cout << finalWinner << endl
+         << endl;
+
     cout << "                   _______________________________________________________________________________________________" << endl
-    << endl;
-    
+         << endl;
+
     if (finalWinner == "No Winner")
     {
         system("color 6F");
@@ -302,11 +306,11 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
         system("color 4F");
         playLoseSound();
     }
-    
+
     if (restartGame())
     {
         system("color 0F");
-        
+
         scoreOfPlayer = 0;
         scoreOfComputer = 0;
         scoreOfDraw = 0;
