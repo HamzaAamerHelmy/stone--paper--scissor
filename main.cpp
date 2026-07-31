@@ -264,14 +264,17 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
     
     if (finalWinner == "No Winner")
     {
+        system("color 6F");
         playDrawSound();
     }
     else if (finalWinner == "Player")
     {
+        system("color 2F");
         playWinSound();
     }
     else
     {
+        system("color 4F");
         playLoseSound();
     }
     
