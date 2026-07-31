@@ -227,7 +227,7 @@ void playWinSound()
 void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     string finalWinner = "";
-    cout << "                   _______________________________________________________________________________________________" << endl
+    cout << "                   ___________________  ____________________________________________________________________________" << endl
          << endl;
     cout << "                                                 +++     G a m e O v e r     +++" << endl;
     cout << "                   _______________________________________________________________________________________________" << endl
