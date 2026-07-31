@@ -34,12 +34,12 @@ void readNumberOfRounds(int &numberOfRounds)
     } while (userInput > 10);
 }
 
-enChoices readPlayerInputOfThisRound(enChoices choiceOfPlayer, int numberOfThisRound)
+enChoices readPlayerInputOfThisRound(enChoices choiceOfPlayer, int numberOfThisRound, int numberOfRounds)
 {
     int userChoice = 0;
     do
     {
-        cout << "Round [" << numberOfThisRound << "] begins: " << endl
+        cout << "Round [" << numberOfThisRound << "/" << numberOfRounds << "] begins: " << endl
              << endl;
         cout << "Enter Your Choice: [1]stone, [2] paper, [3] scissor: ";
         cin >> userChoice;
@@ -159,7 +159,7 @@ void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, en
 {
     for (int i = 1; i <= numberOfRounds; i++)
     {
-        choiceOfPlayer = readPlayerInputOfThisRound(choiceOfPlayer, i);
+        choiceOfPlayer = readPlayerInputOfThisRound(choiceOfPlayer, i, numberOfRounds);
 
         choiceOfComputer = fillComputerInput();
 
