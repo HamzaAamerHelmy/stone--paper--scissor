@@ -49,7 +49,7 @@ void readNumberOfRounds(int &numberOfRounds)
     do
     {
 
-        cout << "Enter Number Of Rounds Or Press E/e to close Program(max 10): ";
+        cout << "Enter Number Of Rounds(max 10): ";
         cin >> userInput;
         cout << endl;
 
