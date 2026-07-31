@@ -151,9 +151,9 @@ void printPlayerChoice(enChoices choiceOfPlayer, string textOfPlayer)
     }
 }
 
-void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer)
+void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer, int numberOfRounds)
 {
-    cout << "____________________Round[" << numberOfThisRound << "]____________________" << endl
+    cout << "____________________Round[" << numberOfThisRound << "/" << numberOfRounds << "]____________________" << endl
          << endl;
     printPlayerChoice(choiceOfPlayer, "Player");
     printPlayerChoice(choiceOfComputer, "Computer");
@@ -191,7 +191,7 @@ void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, en
 
         choiceOfComputer = fillComputerInput();
 
-        printDetailsOfThisRound(i, choiceOfPlayer, choiceOfComputer);
+        printDetailsOfThisRound(i, choiceOfPlayer, choiceOfComputer, numberOfRounds);
     }
 }
 
