@@ -2,6 +2,34 @@
 #include <windows.h>
 using namespace std;
 
+void mySleep(int duration)
+{
+    Sleep(duration);
+}
+
+void clearScreen()
+{
+    system("cls");
+}
+
+void printWelcome()
+{
+    cout << "___________________________Welcome To     ";
+    mySleep(1000);
+    cout << "S T O N E ";
+    mySleep(1000);
+    cout << "-- P A P E R";
+    mySleep(1000);
+    cout << " -- S C I S S O R";
+    mySleep(1000);
+    cout << "     Game___________________________" << endl;
+    mySleep(1000);
+    cout << "Please Wait ..." << endl;
+    mySleep(3000);
+
+    clearScreen();
+}
+
 enum enChoices
 {
     stone = 1,
@@ -13,10 +41,7 @@ int scoreOfPlayer = 0;
 int scoreOfComputer = 0;
 int scoreOfDraw = 0;
 
-void clearScreen()
-{
-    system("cls");
-}
+
 
 void readNumberOfRounds(int &numberOfRounds)
 {
@@ -24,7 +49,7 @@ void readNumberOfRounds(int &numberOfRounds)
     do
     {
 
-        cout << "Enter Number Of Rounds(max 10): ";
+        cout << "Enter Number Of Rounds Or Press E/e to close Program(max 10): ";
         cin >> userInput;
         cout << endl;
 
@@ -162,9 +187,6 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
 
 void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
-    cout << "Wait ..." << endl;
-    Sleep(3000);
-    clearScreen();
     for (int i = 1; i <= numberOfRounds; i++)
     {
         choiceOfPlayer = readPlayerInputOfThisRound(choiceOfPlayer, i, numberOfRounds);
@@ -192,38 +214,38 @@ bool restartGame()
 
 void playLoseSound()
 {
-    Sleep(1000);
+    mySleep(1000);
 
     Beep(650, 250);
-    Sleep(70);
+    mySleep(70);
 
     Beep(500, 250);
-    Sleep(70);
+    mySleep(70);
 
     Beep(300, 900);
 }
 
 void playDrawSound()
 {
-    Sleep(1000);
+    mySleep(1000);
 
     Beep(523, 150);
-    Sleep(30);
+    mySleep(30);
     Beep(659, 150);
-    Sleep(30);
+    mySleep(30);
     Beep(523, 250);
 }
 
 void playWinSound()
 {
-    Sleep(1000);
+    mySleep(1000);
 
     Beep(784, 120);
-    Sleep(30);
+    mySleep(30);
     Beep(988, 120);
-    Sleep(30);
+    mySleep(30);
     Beep(1175, 180);
-    Sleep(30);
+    mySleep(30);
     Beep(1568, 350);
 }
 
@@ -311,7 +333,10 @@ void StartGame()
 
     int numberOfRounds;
 
+    printWelcome();
+
     readNumberOfRounds(numberOfRounds);
+
     readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 
     printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
