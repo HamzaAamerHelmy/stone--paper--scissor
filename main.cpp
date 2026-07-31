@@ -263,9 +263,11 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
     if (restartGame())
     {
         system("color 0F");
+        
         scoreOfPlayer = 0;
         scoreOfComputer = 0;
         scoreOfDraw = 0;
+
         readNumberOfRounds(numberOfRounds);
         readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
         printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
