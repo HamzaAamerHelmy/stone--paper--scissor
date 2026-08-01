@@ -67,6 +67,7 @@ enChoices readPlayerInputOfThisRound(enChoices choiceOfPlayer, int numberOfThisR
     int userChoice = 0;
     cout << "Wait ..." << endl;
     mySleep(1000);
+    clearScreen();
     do
     {
         cout << "Round [" << numberOfThisRound << "/" << numberOfRounds << "] begins: " << endl
