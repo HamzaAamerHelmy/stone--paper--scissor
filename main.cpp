@@ -37,13 +37,9 @@ enum enChoices
     scissor = 3
 };
 
-struct stScores
-{
-    int scoreOfPlayer = 0;
-    int scoreOfComputer = 0;
-    int scoreOfDraw = 0;
-};
-
+int scoreOfPlayer = 0;
+int scoreOfComputer = 0;
+int scoreOfDraw = 0;
 
 void readNumberOfRounds(int &numberOfRounds)
 {
@@ -155,7 +151,7 @@ void printPlayerChoice(enChoices choiceOfPlayer, string textOfPlayer)
     }
 }
 
-void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer, stScores scores)
+void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     cout << "____________________Round[" << numberOfThisRound << "]____________________" << endl
          << endl;
@@ -167,7 +163,7 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
     {
         system("color 2F");
         cout << "[Player]" << endl;
-        scores.scoreOfPlayer++;
+        scoreOfPlayer++;
     }
     else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Computer")
     {
@@ -175,31 +171,31 @@ void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, en
         // play a bill when lose
         cout << "\a";
         cout << "[Computer]" << endl;
-        scores.scoreOfComputer++;
+        scoreOfComputer++;
     }
     else if (winnerRules(choiceOfPlayer, choiceOfComputer) == "Equal")
     {
         system("color 6F");
         cout << "[No Winner]" << endl;
-        scores.scoreOfDraw++;
+        scoreOfDraw++;
     }
     cout << "__________________________________________________" << endl
          << endl;
 }
 
-void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer, stScores scores)
+void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     cout << "Wait ..." << endl;
     mySleep(1000);
     clearScreen();
-
+    
     for (int i = 1; i <= numberOfRounds; i++)
     {
         choiceOfPlayer = readPlayerInputOfThisRound(choiceOfPlayer, i, numberOfRounds);
 
         choiceOfComputer = fillComputerInput();
 
-        printDetailsOfThisRound(i, choiceOfPlayer, choiceOfComputer, scores);
+        printDetailsOfThisRound(i, choiceOfPlayer, choiceOfComputer);
     }
 }
 
@@ -255,7 +251,7 @@ void playWinSound()
     Beep(1568, 350);
 }
 
-void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer, stScores scores)
+void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
     string finalWinner = "";
     mySleep(1000);
@@ -268,23 +264,23 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
          << endl;
     cout << "                   Game Rounds        : " << numberOfRounds << endl;
 
-    cout << "                   Player won times   : " << scores.scoreOfPlayer << endl;
+    cout << "                   Player won times   : " << scoreOfPlayer << endl;
 
-    cout << "                   Computer won times : " << scores.scoreOfComputer << endl;
+    cout << "                   Computer won times : " << scoreOfComputer << endl;
 
-    cout << "                   Draw times         : " << scores.scoreOfDraw << endl;
+    cout << "                   Draw times         : " << scoreOfDraw << endl;
 
     cout << "                   Final Winner       : ";
 
-    if (scores.scoreOfPlayer == scores.scoreOfComputer)
+    if (scoreOfPlayer == scoreOfComputer)
     {
         finalWinner = "No Winner";
     }
-    else if (scores.scoreOfPlayer > scores.scoreOfComputer)
+    else if (scoreOfPlayer > scoreOfComputer)
     {
         finalWinner = "Player";
     }
-    else if (scores.scoreOfComputer > scores.scoreOfPlayer)
+    else if (scoreOfComputer > scoreOfPlayer)
     {
         finalWinner = "Computer";
     }
@@ -315,13 +311,13 @@ void printGameOver(int numberOfRounds, enChoices choiceOfPlayer, enChoices choic
     {
         system("color 0F");
 
-        scores.scoreOfPlayer = 0;
-        scores.scoreOfComputer = 0;
-        scores.scoreOfDraw = 0;
+        scoreOfPlayer = 0;
+        scoreOfComputer = 0;
+        scoreOfDraw = 0;
 
         readNumberOfRounds(numberOfRounds);
-        readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer, scores);
-        printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer, scores);
+        readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
+        printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
     }
     else
     {
@@ -335,8 +331,6 @@ void StartGame()
     system("color 0F");
     srand((unsigned)time(NULL));
 
-    stScores scores;
-
     enChoices choiceOfPlayer;
 
     enChoices choiceOfComputer;
@@ -347,9 +341,9 @@ void StartGame()
 
     readNumberOfRounds(numberOfRounds);
 
-    readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer, scores);
+    readAndPrintMultipleRounds(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 
-    printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer, scores);
+    printGameOver(numberOfRounds, choiceOfPlayer, choiceOfComputer);
 }
 
 int main()
