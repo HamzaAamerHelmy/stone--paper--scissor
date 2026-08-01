@@ -65,6 +65,8 @@ void readNumberOfRounds(int &numberOfRounds)
 enChoices readPlayerInputOfThisRound(enChoices choiceOfPlayer, int numberOfThisRound, int numberOfRounds)
 {
     int userChoice = 0;
+    cout << "Wait ..." << endl;
+    mySleep(1000);
     do
     {
         cout << "Round [" << numberOfThisRound << "/" << numberOfRounds << "] begins: " << endl
@@ -151,9 +153,9 @@ void printPlayerChoice(enChoices choiceOfPlayer, string textOfPlayer)
     }
 }
 
-void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer, int numberOfRounds)
+void printDetailsOfThisRound(int numberOfThisRound, enChoices choiceOfPlayer, enChoices choiceOfComputer)
 {
-    cout << "____________________Round[" << numberOfThisRound << "/" << numberOfRounds << "]____________________" << endl
+    cout << "____________________Round[" << numberOfThisRound << "]____________________" << endl
          << endl;
     printPlayerChoice(choiceOfPlayer, "Player");
     printPlayerChoice(choiceOfComputer, "Computer");
@@ -191,7 +193,7 @@ void readAndPrintMultipleRounds(int numberOfRounds, enChoices choiceOfPlayer, en
 
         choiceOfComputer = fillComputerInput();
 
-        printDetailsOfThisRound(i, choiceOfPlayer, choiceOfComputer, numberOfRounds);
+        printDetailsOfThisRound(i, choiceOfPlayer, choiceOfComputer);
     }
 }
 
