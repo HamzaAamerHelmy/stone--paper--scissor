@@ -99,31 +99,30 @@ string winnerRules(enChoices choiceOfPlayer, enChoices choiceOfComputer)
     {
         return "Equal";
     }
-    else if (choiceOfPlayer == enChoices::stone && choiceOfComputer == enChoices::paper)
+    
+    switch (choiceOfPlayer)
     {
-        return "Computer";
+    case enChoices::stone:
+        if (choiceOfComputer == enChoices::paper)
+        {
+            return "Computer";
+        }
+        break;
+    case enChoices::paper:
+        if (choiceOfComputer == enChoices::scissor)
+        {
+            return "Computer";
+        }
+        break;
+    case enChoices::scissor:
+        if (choiceOfComputer == enChoices::stone)
+        {
+            return "Computer";
+        }
+        break;
     }
-    else if (choiceOfPlayer == enChoices::stone && choiceOfComputer == enChoices::scissor)
-    {
-        return "Player";
-    }
-    else if (choiceOfPlayer == enChoices::paper && choiceOfComputer == enChoices::stone)
-    {
-        return "Player";
-    }
-    else if (choiceOfPlayer == enChoices::paper && choiceOfComputer == enChoices::scissor)
-    {
-        return "Computer";
-    }
-    else if (choiceOfPlayer == enChoices::scissor && choiceOfComputer == enChoices::stone)
-    {
-        return "Computer";
-    }
-    else if (choiceOfPlayer == enChoices::scissor && choiceOfComputer == enChoices::paper)
-    {
-        return "Player";
-    }
-    return "Wrong";
+
+    return "Player";
 }
 
 void printPlayerChoice(enChoices choiceOfPlayer, string textOfPlayer)
